@@ -51,20 +51,20 @@ function game() {
     computerScore = 0;
     for (let i = 0; i < 5; i++) {
         userInput = prompt("Enter rock, paper or scissor: ");
-        result = playRound(userInput, getComputerChoice);
+        result = playRound(userInput, getComputerChoice());
         if (result === "You win!") {
             userScore += 1;
         } else if (result === "You lose!") {
             computerScore += 1;
         }
 
-        console.log(result);
+        console.log(result + " Score is " + userScore + " " + computerScore);
     }
 
     if (computerScore > userScore) {
         console.log("The computer wins the game!")
     } else if (userScore > computerScore) {
-        console.log("The user winds the game!")
+        console.log("The user wins the game!")
     } else {
         console.log("Its a tie!")
     }
