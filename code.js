@@ -14,3 +14,32 @@ function getPlayerChoice() {
         return "Error: Invalid choice selected";
     }
 }
+
+function playRound(userChoice, computerChoice) {
+    switch(userChoice) {
+        case 'Rock':
+            if (computerChoice === 'Paper') {
+                return "You Lose! " + computerChoice + " beats " + userChoice;
+            } else if (computerChoice === 'Scissor') {
+                return "You Win! " + userChoice + " beats " + computerChoice;
+            } else {
+                return "Its a tie!";
+            }
+        case 'Paper':
+            if (computerChoice === 'Scissor') {
+                return "You Lose! " + computerChoice + " beats " + userChoice;
+            } else if (computerChoice === 'Rock') {
+                return "You Win! " + userChoice + " beats " + computerChoice;
+            } else {
+                return "Its a tie!";
+            }
+        case 'Scissor':
+            if (computerChoice === 'Rock') {
+                return "You Lose! " + computerChoice + " beats " + userChoice;
+            } else if (computerChoice === 'Paper') {
+                return "You Win! " + userChoice + " beats " + computerChoice;
+            } else {
+                return "Its a tie!";
+            }
+    }
+}
