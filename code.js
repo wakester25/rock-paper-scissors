@@ -4,12 +4,12 @@ function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function getPlayerChoice() {
-    let playerInput = prompt("Please enter your choice (Rock, Paper, Scissor): ").toLowerCase();
-    playerInput = playerInput.charAt(0).toUpperCase() + playerInput.slice(1);
+function getUserChoice() {
+    let userInput = prompt("Please enter your choice (Rock, Paper, Scissor): ").toLowerCase();
+    userInput = userInput.charAt(0).toUpperCase() + userInput.slice(1);
     
-    if (playerInput === 'Rock' || playerInput === 'Paper' || playerInput === 'Scissor') {
-        return playerInput;
+    if (userInput === 'Rock' || userInput === 'Paper' || userInput === 'Scissor') {
+        return userInput;
     } else {
         return "Error: Invalid choice selected";
     }
@@ -45,5 +45,11 @@ function playRound(userChoice, computerChoice) {
 }
 
 function game() {
+    let userScore = 0;
+    let computerScore = 0;
 
+    for (let i = 0; i < 5; i++) {
+        userChoice = getUserChoice();
+        computerChoice = getComputerChoice();
+    }
 }
