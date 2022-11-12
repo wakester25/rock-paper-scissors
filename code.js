@@ -19,27 +19,31 @@ function playRound(userChoice, computerChoice) {
     switch(userChoice) {
         case 'Rock':
             if (computerChoice === 'Paper') {
-                return "You Lose! " + computerChoice + " beats " + userChoice;
+                return ["You Lose!", computerChoice, userChoice]; 
             } else if (computerChoice === 'Scissor') {
-                return "You Win! " + userChoice + " beats " + computerChoice;
+                return ["You Win!", computerChoice, userChoice];
             } else {
-                return "Its a tie!";
+                return ["Its a tie!", computerChoice, userChoice];
             }
         case 'Paper':
             if (computerChoice === 'Scissor') {
-                return "You Lose! " + computerChoice + " beats " + userChoice;
+                return ["You Lose!", computerChoice, userChoice]; 
             } else if (computerChoice === 'Rock') {
-                return "You Win! " + userChoice + " beats " + computerChoice;
+                return ["You Win!", computerChoice, userChoice];
             } else {
-                return "Its a tie!";
+                return ["Its a tie!", computerChoice, userChoice];
             }
         case 'Scissor':
             if (computerChoice === 'Rock') {
-                return "You Lose! " + computerChoice + " beats " + userChoice;
+                return ["You Lose!", computerChoice, userChoice]; 
             } else if (computerChoice === 'Paper') {
-                return "You Win! " + userChoice + " beats " + computerChoice;
+                return ["You Win!", computerChoice, userChoice];
             } else {
-                return "Its a tie!";
+                return ["Its a tie!", computerChoice, userChoice];
             }
     }
+}
+
+function game() {
+
 }
