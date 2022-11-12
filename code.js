@@ -51,5 +51,27 @@ function game() {
     for (let i = 0; i < 5; i++) {
         userChoice = getUserChoice();
         computerChoice = getComputerChoice();
+
+        let result = playRound(userChoice, computerChoice);
+
+        if (result[0] === "You Win!") {
+            console.log(result[0] + " " + result[2] + " beats " + result[1] + "! Score: " + userScore + " to " + computerScore);
+            userScore++;
+        } else if (result[0] === "You Lose!") {
+            console.log(result[0] + " " + result[1] + " beats " + result[2] + "! Score: " + userScore + " to " + computerScore);
+            computerScore++;
+        } else {
+            console.log(result[0] + " Score: " + userScore + " to " + computerScore);
+        }
+    }
+
+    if (userScore > computerScore) {
+        console.log("Congrats! You win the entire game!");
+    } else if (computerScore > userScore) {
+        console.log("To bad! You lose the entire game!");
+    } else {
+        console.log("The game ends in a tie!");
     }
 }
+
+game();
