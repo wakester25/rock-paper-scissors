@@ -51,19 +51,22 @@ function game() {
     //userChoice = getUserChoice();
 
     buttons = document.querySelectorAll("button");
-    displaybox = document.querySelector("#displayBox");
+    displayBox = document.querySelector("#displayBox");
+    scoreBox = document.querySelector("#scoreBox");
     buttons.forEach(button => button.addEventListener("click", () => {
         result = playRound(button.outerText, getComputerChoice());
         displayBox.textContent = result;
 
         if (result[0] === "You Win!") {
-            displayBox.textContent = result[0] + " " + result[2] + " beats " + result[1] + "! Score: " + userScore + " to " + computerScore;
+            displayBox.textContent = result[0] + " " + result[2] + " beats " + result[1] + "!"
             userScore++;
+            scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
         } else if (result[0] === "You Lose!") {
-            displayBox.textContent = result[0] + " " + result[1] + " beats " + result[2] + "! Score: " + userScore + " to " + computerScore;
+            displayBox.textContent = result[0] + " " + result[1] + " beats " + result[2] + "!";
             computerScore++;
+            scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
         } else {
-            displayBox.textContent = result[0] + " Score: " + userScore + " to " + computerScore;
+            scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
         }
     
         if (userScore > computerScore) {
