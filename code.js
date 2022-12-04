@@ -44,7 +44,7 @@ function playRound(userChoice, computerChoice) {
     }
 }
 
-function checkWinner(userScore, computerScore) {
+function checkGameWinner(userScore, computerScore) {
     if (userScore >= 5 || computerScore >= 5 ) return true;
     return false;
 }
@@ -60,7 +60,7 @@ function game() {
     scoreBox = document.querySelector("#scoreBox");
     buttons.forEach(button => button.addEventListener("click", () => {
 
-        if (!checkWinner(userScore, computerScore)) {
+        if (!checkGameWinner(userScore, computerScore)) {
             result = playRound(button.outerText, getComputerChoice());
             displayBox.textContent = result;
 
