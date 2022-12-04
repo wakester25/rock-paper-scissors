@@ -51,7 +51,10 @@ function game() {
     //userChoice = getUserChoice();
 
     buttons = document.querySelectorAll("button");
-    buttons.forEach(button => button.addEventListener("click", () => console.log("I have been click!")));
+    buttons.forEach(button => button.addEventListener("click", () => {
+        result = playRound(button.outerText, getComputerChoice());
+        console.log(result);
+    }));
  
 
     //
