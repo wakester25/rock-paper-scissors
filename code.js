@@ -44,6 +44,11 @@ function playRound(userChoice, computerChoice) {
     }
 }
 
+function checkWinner(userScore, computerScore) {
+    if (userScore >= 5 || computerScore >= 5 ) return true;
+    return false;
+}
+
 function game() {
     let userScore = 0;
     let computerScore = 0;
@@ -54,27 +59,28 @@ function game() {
     displayBox = document.querySelector("#displayBox");
     scoreBox = document.querySelector("#scoreBox");
     buttons.forEach(button => button.addEventListener("click", () => {
-        result = playRound(button.outerText, getComputerChoice());
-        displayBox.textContent = result;
 
-        if (result[0] === "You Win!") {
-            displayBox.textContent = result[0] + " " + result[2] + " beats " + result[1] + "!"
-            userScore++;
-            scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
-        } else if (result[0] === "You Lose!") {
-            displayBox.textContent = result[0] + " " + result[1] + " beats " + result[2] + "!";
-            computerScore++;
-            scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
+        if (!checkWinner(userScore, computerScore)) {
+            result = playRound(button.outerText, getComputerChoice());
+            displayBox.textContent = result;
+
+            if (result[0] === "You Win!") {
+                displayBox.textContent = result[0] + " " + result[2] + " beats " + result[1] + "!"
+                userScore++;
+                scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
+            } else if (result[0] === "You Lose!") {
+                displayBox.textContent = result[0] + " " + result[1] + " beats " + result[2] + "!";
+                computerScore++;
+                scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
+            } else {
+                scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
+            }
         } else {
-            scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
-        }
-    
-        if (userScore > computerScore) {
-            displayBox.textConent = "Congrats! You win the entire game!";
-        } else if (computerScore > userScore) {
-            displayBox.textContent = "To bad! You lose the entire game!";
-        } else {
-            displayBox.textContent = "The game ends in a tie!";
+            if (userScore > computerScore) {
+                displayBox.textConent = "Congrats! You win the game!";
+            } else {
+                displayBox.textContent = "To bad! You lose the game!";
+            } 
         }
     }));
  
