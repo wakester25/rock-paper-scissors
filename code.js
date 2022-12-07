@@ -57,7 +57,9 @@ function game() {
 
     buttons = document.querySelectorAll("button");
     displayBox = document.querySelector("#displayBox");
-    scoreBox = document.querySelector("#scoreBox");
+    //scoreBox = document.querySelector("#scoreBox");
+    userScoreBox = document.querySelector("#userScoreBox");
+    computerScoreBox = document.querySelector("#computerScoreBox");
     buttons.forEach(button => button.addEventListener("click", () => {
 
         if (!checkGameWinner(userScore, computerScore)) {
@@ -66,14 +68,17 @@ function game() {
             if (result[0] === "You Win!") {
                 displayBox.textContent = result[0] + " " + result[2] + " beats " + result[1] + "!"
                 userScore++;
-                scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
+                userScoreBox.textContent = "User Score: " + userScore;
+                computerScoreBox.textContent = "Computer Score: " + computerScore;
             } else if (result[0] === "You Lose!") {
                 displayBox.textContent = result[0] + " " + result[1] + " beats " + result[2] + "!";
                 computerScore++;
-                scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
+                userScoreBox.textContent = "User Score: " + userScore;
+                computerScoreBox.textContent = "Computer Score: " + computerScore;
             } else {
                 displayBox.textContent = result[0] + " Both players choose " + result[1];
-                scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
+                userScoreBox.textContent = "User Score: " + userScore;
+                computerScoreBox.textContent = "Computer Score: " + computerScore;
             }
         } else {
             if (userScore > computerScore) {
