@@ -62,7 +62,6 @@ function game() {
 
         if (!checkGameWinner(userScore, computerScore)) {
             result = playRound(button.outerText, getComputerChoice());
-            displayBox.textContent = result;
 
             if (result[0] === "You Win!") {
                 displayBox.textContent = result[0] + " " + result[2] + " beats " + result[1] + "!"
@@ -73,6 +72,7 @@ function game() {
                 computerScore++;
                 scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
             } else {
+                displayBox.textContent = result[0] + " Both players choose " + result[1];
                 scoreBox.textContent = "Score: " + userScore + " to " + computerScore;
             }
         } else {
