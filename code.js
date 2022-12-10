@@ -53,11 +53,8 @@ function game() {
     let userScore = 0;
     let computerScore = 0;
 
-    //userChoice = getUserChoice();
-
     buttons = document.querySelectorAll("button");
     displayBox = document.querySelector("#displayBox");
-    //scoreBox = document.querySelector("#scoreBox");
     userScoreDisplay = document.querySelector("#userScore");
     computerScoreDisplay = document.querySelector("#computerScore");
     buttons.forEach(button => button.addEventListener("click", () => {
