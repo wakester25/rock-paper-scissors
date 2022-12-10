@@ -53,11 +53,23 @@ function game() {
     let userScore = 0;
     let computerScore = 0;
 
-    buttons = document.querySelectorAll("button");
+    rpsButtons = document.querySelectorAll(".rps-button");
+    resetButton = document.querySelector(".reset-button");
     displayBox = document.querySelector("#displayBox");
     userScoreDisplay = document.querySelector("#userScore");
     computerScoreDisplay = document.querySelector("#computerScore");
-    buttons.forEach(button => button.addEventListener("click", () => {
+
+    displayBox.textContent = "Select Rock, Paper or Scissor to start game";
+    
+    resetButton.addEventListener("click", () => {
+        userScore = 0;
+        computerScore = 0;
+        computerScoreDisplay.textContent = computerScore;
+        userScoreDisplay.textContent = userScore;
+        displayBox.textContent = "Select Rock, Paper or Scissor to start game";
+    });
+
+    rpsButtons.forEach(button => button.addEventListener("click", () => {
 
         if (!checkGameWinner(userScore, computerScore)) {
             result = playRound(button.outerText, getComputerChoice());
@@ -73,7 +85,7 @@ function game() {
                 userScoreDisplay.textContent = userScore;
                 computerScoreDisplay.textContent = computerScore;
             } else {
-                displayBox.textContent = result[0] + " Both players choose " + result[1];
+                displayBox.textContent = result[0] + " Both players chose " + result[1];
                 userScoreDisplay.textContent = userScore;
                 computerScoreDisplay.textContent = computerScore;
             }
@@ -88,4 +100,4 @@ function game() {
  
 }
 
-game();
+game()
