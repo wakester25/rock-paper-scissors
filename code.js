@@ -49,6 +49,14 @@ function checkGameWinner(userScore, computerScore) {
     return false;
 }
 
+function resetGame() {
+        userScore = 0;
+        computerScore = 0;
+        computerScoreDisplay.textContent = computerScore;
+        userScoreDisplay.textContent = userScore;
+        displayBox.textContent = "Select Rock, Paper or Scissor to start game";
+}
+
 function game() {
     let userScore = 0;
     let computerScore = 0;
@@ -61,19 +69,13 @@ function game() {
 
     displayBox.textContent = "Select Rock, Paper or Scissor to start game";
     
-    resetButton.addEventListener("click", () => {
-        userScore = 0;
-        computerScore = 0;
-        computerScoreDisplay.textContent = computerScore;
-        userScoreDisplay.textContent = userScore;
-        displayBox.textContent = "Select Rock, Paper or Scissor to start game";
-    });
+    resetButton.addEventListener("click", () => resetGame());
 
     rpsButtons.forEach(button => button.addEventListener("click", () => {
+        
+        result = playRound(button.outerText, getComputerChoice());
 
         if (!checkGameWinner(userScore, computerScore)) {
-            result = playRound(button.outerText, getComputerChoice());
-
             if (result[0] === "You Win!") {
                 displayBox.textContent = result[0] + " " + result[2] + " beats " + result[1] + "!"
                 userScore++;
@@ -89,12 +91,14 @@ function game() {
                 userScoreDisplay.textContent = userScore;
                 computerScoreDisplay.textContent = computerScore;
             }
-        } else {
-            if (userScore > computerScore) {
-                displayBox.textConent = "Congrats! You win the game!";
-            } else {
-                displayBox.textContent = "To bad! You lose the game!";
-            } 
+    
+            if (checkGameWinner(userScore, computerScore)) {
+                if (userScore > computerScore) {
+                    displayBox.textContent = "Congrats! You win the game!";
+                } else {
+                    displayBox.textContent = "To bad! You lose the game!";
+                }
+            }
         }
     }));
  
